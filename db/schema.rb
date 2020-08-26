@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_26_040658) do
+ActiveRecord::Schema.define(version: 2020_08_26_061006) do
 
   create_table "nearest_stations", force: :cascade do |t|
     t.string "route_name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_08_26_040658) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
   end
 
 end

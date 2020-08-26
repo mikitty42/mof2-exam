@@ -1,1 +1,1 @@
-json.partial! "nearest_station　s/nearest_station　", nearest_station　: @nearest_station　
+json.partial! "nearest_stations/nearest_station", nearest_station: @nearest_station
