@@ -1,30 +1,15 @@
 class NearestStationsController < ApplicationController
+  include Common
   before_action :set_nearest_station, only: [:show, :edit, :update, :destroy]
-
-  # GET /nearest_stations
-  # GET /nearest_stations.json
   def index
     @nearest_stations = NearestStation.all
   end
 
-  # GET /nearest_stations/1
-  # GET /nearest_stations/1.json
-  def show
-    @nearest_stations = @property.nearest_stations
-  end
 
-  # GET /nearest_stations/new
   def new
     @nearest_station = NearestStation.new
   end
 
-  # GET /nearest_stations/1/edit
-  def edit
-    @property.nearest_stations.build
-  end
-
-  # POST /nearest_stations
-  # POST /nearest_stations.json
   def create
     @nearest_station = NearestStation.new(nearest_station_params)
 
@@ -39,8 +24,14 @@ class NearestStationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /nearest_stations/1
-  # PATCH/PUT /nearest_stations/1.json
+  def show
+    set_categories
+  end
+
+  def edit
+    set_category
+  end
+
   def update
     respond_to do |format|
       if @nearest_station.update(nearest_station_params)
@@ -53,8 +44,7 @@ class NearestStationsController < ApplicationController
     end
   end
 
-  # DELETE /nearest_stations/1
-  # DELETE /nearest_stations/1.json
+
   def destroy
     @nearest_station.destroy
     respond_to do |format|
@@ -64,12 +54,11 @@ class NearestStationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_nearest_station
       @nearest_station = NearestStation.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def nearest_station_params
       params.require(:nearest_station).permit(:route_name, :station_name, :minutes_walk, :property_id)
     end

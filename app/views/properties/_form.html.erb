@@ -38,7 +38,10 @@
 
 <p style="border-bottom: 1px solid grey;"></p>
 
+  <% i = 0 %>
   <%= form.fields_for :nearest_stations do |nearest_station| %>
+  <% i += 1 %>
+  <p class='moyorieki'>最寄り駅<%= nearest_station.index + 1 %></p>
   <div class="route_name">
     <%= nearest_station.label :路線名 %><br>
     <%= nearest_station.text_field :route_name %>
@@ -57,5 +60,20 @@
   <div class="actions">
     <%= form.submit '登録する' %>
   </div>
-
 <% end %>
+
+
+<script>
+window.onload = () => {
+  document.getElementsByClassName('moyorieki')[0].innerText = "最寄駅1"
+  const button = document.getElementById('addStation')
+  button.addEventListener('click', () => {
+    setTimeout(() => {
+      const moyoriekis = document.getElementsByClassName('moyorieki')
+      for(i = 0; i < moyoriekis.length; i++){
+        moyoriekis[i].innerHTML = `最寄駅${i+1}`
+      }
+    }, 1)
+  })
+}
+</script>
