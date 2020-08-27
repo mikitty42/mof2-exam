@@ -10,6 +10,7 @@ class PropertiesController < ApplicationController
   # GET /properties/1
   # GET /properties/1.json
   def show
+    @nearest_stations = @property.nearest_stations
   end
 
   # GET /properties/new
@@ -74,7 +75,7 @@ class PropertiesController < ApplicationController
         nearest_stations_attributes: [
         :station_name,
         :route_name,
-        :minuets_walk,
+        :minutes_walk,
         :property_id,
         :id,
         :_destroy,
