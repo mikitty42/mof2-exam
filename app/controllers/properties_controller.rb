@@ -29,8 +29,7 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     if @property.save
-      flash[:success] = '物件の登録に成功しました'
-      redirect_to :root
+      redirect_to({action: :index}, notice:"物件の登録に成功しました")
     else
       flash.now[:alert] = '物件の登録に失敗しました'
       render :new
@@ -41,7 +40,7 @@ class PropertiesController < ApplicationController
   # PATCH/PUT /properties/1.json
   def update
     if @property.update(property_params)
-        redirect_to properties_path,notice: '物件の編集に成功しました'
+        redirect_to({action: :index}, notice:"物件の編集に成功しました")
     else
       render :edit
     end
@@ -53,7 +52,7 @@ class PropertiesController < ApplicationController
   def destroy
     @property.destroy
     respond_to do |format|
-      format.html { redirect_to properties_url, notice: 'Property was successfully destroyed.' }
+      format.html { redirect_to properties_path, notice: 'Property was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -36,7 +36,7 @@
     <%= form.text_area :note %>
   </div>
 
-  <p class="box"></p>
+<p style="border-bottom: 1px solid grey;"></p>
 
   <%= form.fields_for :nearest_stations do |nearest_station| %>
   <div class="route_name">
@@ -51,7 +51,7 @@
 
   <div class="minutes_walk">
     <%= nearest_station.label :徒歩分数 %><br>
-    <%= nearest_station.number_field :minutes_walk %>分<br>
+    <%= nearest_station.number_field :minutes_walk %>分
   </div>
   <% end %>
   <div class="actions">
