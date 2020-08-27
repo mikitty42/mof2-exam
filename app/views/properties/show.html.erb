@@ -28,25 +28,25 @@
 
     <p style="border-bottom: 1px solid grey;"></p>
 
-
-    <% @nearest_stations.each do |nearest_station| %>
+    <div class="form_station">
+      <% @station.each.with_index(1) do |s, i| %>
+      <strong>最寄駅<%= i %></strong>
      <% if @property.nearest_stations.any? %>
      <p>
        <strong>路線名</strong>
-       <%= nearest_station.route_name %>
+       <%= s.route_name %>
      </p>
 
      <p>
        <strong>駅名</strong>
-       <%= nearest_station.station_name %>
+       <%= s.station_name %>
      </p>
 
      <p>
        <strong>徒歩分数</strong>
-       <%= nearest_station.minutes_walk %>
+       <%= s.minutes_walk %>
      </p>
      <% end %>
     <% end %>
-
 <%= link_to '編集', edit_property_path(@property) %> |
 <%= link_to '戻る', properties_path %>

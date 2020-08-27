@@ -1,7 +1,7 @@
 class PropertiesController < ApplicationController
   include Common
   before_action :set_property, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_station, only: [:show, :edit, :update, :destroy]
   def index
     @properties = Property.all
   end
@@ -9,7 +9,7 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    3.times { @property.nearest_stations.build }
+    2.times { @property.nearest_stations.build }
   end
 
   def create
@@ -69,4 +69,7 @@ class PropertiesController < ApplicationController
       )
     end
 
+    def set_station
+      @station = NearestStation.where(property_id: @property.id)
+    end
 end
